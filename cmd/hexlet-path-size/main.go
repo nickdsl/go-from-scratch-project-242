@@ -1,6 +1,7 @@
 package main
 
 import (
+	"code"
 	"fmt"
 	"os"
 	"log"
@@ -17,10 +18,16 @@ func main() {
 		// библиотека позволяет автоматически его обрабатывать
 		Name:  "hexlet-path-size",
 		Usage: "print size of a file or directory",
-		Action: func(context.Context, *cli.Command) error {
+		Action: func(ctx context.Context, cmd *cli.Command) error {
 			// непосредственная логика выполнения прграммы (основная логика)
-			var message string = "Hello from Hexlet!"
-			fmt.Println(message)
+			result, err := code.GetPathSize(cmd.Args().Get(0))
+			if err != nil {
+				log.Printf("Error: %v", err)
+				return err
+			}
+			// здесь мы находимся только в том случае, если ошибку функция не вернула
+			// и можно возвращать результат
+			fmt.Printf("%s\t%v\n",result, cmd.Args().Get(0))
 			return nil
 		},
 	}
