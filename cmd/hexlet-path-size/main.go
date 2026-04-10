@@ -18,6 +18,13 @@ func main() {
 		// библиотека позволяет автоматически его обрабатывать
 		Name:  "hexlet-path-size",
 		Usage: "print size of a file or directory",
+		Flags: []cli.Flag{
+			&cli.BoolFlag{
+				Name:        "human",
+				Usage:       "human-readable sizes (auto-select unit)",
+				Aliases:     []string{"H"},
+			},
+		},
 		Action: func(ctx context.Context, cmd *cli.Command) error {
 			// непосредственная логика выполнения прграммы (основная логика)
 			result, err := code.GetPathSize(cmd.Args().Get(0))
