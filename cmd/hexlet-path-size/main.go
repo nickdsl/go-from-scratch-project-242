@@ -22,7 +22,7 @@ func main() {
 			// непосредственная логика выполнения прграммы (основная логика)
 			result, err := code.GetPathSize(cmd.Args().Get(0))
 			if err != nil {
-				log.Printf("Error: %v", err)
+				//log.Printf("Error: %v", err)
 				return err
 			}
 			// здесь мы находимся только в том случае, если ошибку функция не вернула
